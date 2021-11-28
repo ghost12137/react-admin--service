@@ -22,7 +22,7 @@ module.exports = {
     const {
       id
     } = body;
-    let deleteStatus = 'not-delete';
+    let deleteStatus = 'no-user';
     userMessage.forEach((user, index) => {
       if (user.id === id) {
         userMessage.splice(index, 1);
