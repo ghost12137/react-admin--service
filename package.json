@@ -1,0 +1,19 @@
+{
+  "name": "react-admin-service",
+  "version": "1.0.0",
+  "description": "react-damin的后端",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "ghost12137",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "koa2-cors": "^2.0.6",
+    "nodemon": "^2.0.15"
+  }
+}
