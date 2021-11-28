@@ -18,4 +18,20 @@ module.exports = {
       total: userMessage.length
     };
   },
+  deleteUser: async (body) => {
+    const {
+      id
+    } = body;
+    let deleteStatus = 'not-delete';
+    userMessage.forEach((user, index) => {
+      if (user.id === id) {
+        userMessage.splice(index, 1);
+        deleteStatus = 'deleted'
+      }
+    });
+    return {
+      status: 200,
+      data: deleteStatus
+    };
+  },
 };

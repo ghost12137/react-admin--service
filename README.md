@@ -5,3 +5,4 @@
 * koa2-cors
 * koa-bodyparser
 * koa2-cors
+* uuid
