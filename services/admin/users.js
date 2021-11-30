@@ -1,6 +1,8 @@
 const {
-  userMessage
+  userMessage,
+  roleList
 } = require('../../datas/admin/users');
+const UUID = require('uuid');
 
 module.exports = {
   getUserList: async (query) => {
@@ -16,6 +18,39 @@ module.exports = {
       data: userMessage.slice(sliceBegin, sliceEnd),
       status: 200,
       total: userMessage.length
+    };
+  },
+  createUser: async (body) => {
+    const {
+      name,
+      password,
+      role
+    } = body;
+    let nameExists = false;
+    userMessage.forEach(user => {
+      if (user.name === name) {
+        nameExists = true;
+      }
+    });
+    if (nameExists) {
+      return {
+        status: 400,
+        message: '该用户已存在'
+      };
+      return;
+    }
+
+    const newUser = {
+      id: UUID.v1(),
+      name,
+      password,
+      role: roleList[role]
+    };
+    userMessage.push(newUser);
+
+    return {
+      status: 200,
+      data: '用户创建成功'
     };
   },
   updateUser: async (body) => {
@@ -42,7 +77,7 @@ module.exports = {
     } else {
       return {
         status: 400,
-        data: '没有该用户'
+        message: '没有该用户'
       };
     }
   },

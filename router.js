@@ -5,8 +5,9 @@ const router = new Router();
 
 module.exports = app => {
   router.get('/api/admin/users', AdminUsersController.getUsers);
-  router.put('/api/admin/users', AdminUsersController.updateUsers);
-  router.delete('/api/admin/users', AdminUsersController.deleteUsers);
+  router.post('/api/admin/users', AdminUsersController.createUser);
+  router.put('/api/admin/users', AdminUsersController.updateUser);
+  router.delete('/api/admin/users', AdminUsersController.deleteUser);
   app.use(router.routes())
     .use(router.allowedMethods());
 };
