@@ -5,6 +5,12 @@ module.exports = {
     const data = await AdminUsersService.getUserList(ctx.request.query);
     ctx.response.body = data;
   },
+  updateUsers: async (ctx, next) => {
+    const body = ctx.request.body;
+    const result = await AdminUsersService.updateUser(body);
+    ctx.status = result.status;
+    ctx.response.body = result;
+  },
   deleteUsers: async (ctx, next) => {
     const body = ctx.request.body;
     const result = await AdminUsersService.deleteUser(body);

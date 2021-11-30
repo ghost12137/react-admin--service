@@ -18,6 +18,34 @@ module.exports = {
       total: userMessage.length
     };
   },
+  updateUser: async (body) => {
+    const {
+      id,
+      name,
+      password,
+      role
+    } = body;
+    let updated = false;
+    userMessage.forEach(user => {
+      if (user.id === id) {
+        user.name = name;
+        user.password = password;
+        user.role = role;
+        updated = true;
+      }
+    });
+    if (updated) {
+      return {
+        status: 200,
+        data: true
+      };
+    } else {
+      return {
+        status: 400,
+        data: '没有该用户'
+      };
+    }
+  },
   deleteUser: async (body) => {
     const {
       id
