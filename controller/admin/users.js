@@ -1,6 +1,11 @@
 const AdminUsersService = require('../../services/admin/users');
 
 module.exports = {
+  getRoleList: async (ctx, next) => {
+    const result = AdminUsersService.getRoleList();
+    ctx.status = result.status;
+    ctx.response.body = result;
+  },
   getUsers: async (ctx, next) => {
     const data = await AdminUsersService.getUserList(ctx.request.query);
     ctx.response.body = data;

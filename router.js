@@ -4,6 +4,7 @@ const AdminUsersController = require('./controller/admin/users');
 const router = new Router();
 
 module.exports = app => {
+  router.get('/api/admin/roleList', AdminUsersController.getRoleList);
   router.get('/api/admin/users', AdminUsersController.getUsers);
   router.post('/api/admin/users', AdminUsersController.createUser);
   router.put('/api/admin/users', AdminUsersController.updateUser);

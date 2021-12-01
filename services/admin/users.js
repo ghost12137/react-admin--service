@@ -5,6 +5,13 @@ const {
 const UUID = require('uuid');
 
 module.exports = {
+  getRoleList: () => {
+    return {
+      status: 200,
+      data: roleList
+    };
+  },
+
   getUserList: async (query) => {
     const {
       currentPage = 1,
@@ -37,7 +44,6 @@ module.exports = {
         status: 400,
         message: '该用户已存在'
       };
-      return;
     }
 
     const newUser = {
