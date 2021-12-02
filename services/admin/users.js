@@ -50,13 +50,13 @@ module.exports = {
       id: UUID.v1(),
       name,
       password,
-      role: roleList[role]
+      role: role
     };
     userMessage.push(newUser);
 
     return {
       status: 200,
-      data: '用户创建成功'
+      data: 'yes'
     };
   },
   updateUser: async (body) => {
@@ -78,7 +78,7 @@ module.exports = {
     if (updated) {
       return {
         status: 200,
-        data: true
+        data: 'yes'
       };
     } else {
       return {
