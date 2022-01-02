@@ -4,6 +4,16 @@ const {
 } = require('../../datas/admin/users');
 const UUID = require('uuid');
 
+const {
+  getAllUsers,
+  getAllUsersCount,
+  getUserById,
+  getUserByName,
+  updateUser,
+  createUser,
+  deleteUser,
+} = require('../../lib/action/user');
+
 module.exports = {
   getRoleList: () => {
     return {
@@ -15,16 +25,24 @@ module.exports = {
   getUserList: async (query) => {
     const {
       currentPage = 1,
-        pageSize = 10
+      pageSize = 10
     } = query;
 
     const sliceBegin = (currentPage - 1) * pageSize;
-    const sliceEnd = currentPage * pageSize;
 
+    let result = await getAllUsers(sliceBegin, pageSize);
+
+    const userCount = await getAllUsersCount();
+
+    if (result && result.length) {
+      result = result.map(item => {
+        return JSON.parse(JSON.stringify(item, null, 2));
+      })
+    }
     return {
-      data: userMessage.slice(sliceBegin, sliceEnd),
+      data: result,
       status: 200,
-      total: userMessage.length
+      total: userCount
     };
   },
   createUser: async (body) => {
@@ -33,26 +51,22 @@ module.exports = {
       password,
       role
     } = body;
-    let nameExists = false;
-    userMessage.forEach(user => {
-      if (user.name === name) {
-        nameExists = true;
-      }
-    });
-    if (nameExists) {
+
+    const user = await getUserByName(name);
+    if (user) {
       return {
         status: 400,
         message: '该用户已存在'
       };
     }
-
     const newUser = {
       id: UUID.v1(),
       name,
       password,
       role: role
     };
-    userMessage.push(newUser);
+
+    await createUser(newUser);
 
     return {
       status: 200,
@@ -62,20 +76,11 @@ module.exports = {
   updateUser: async (body) => {
     const {
       id,
-      name,
-      password,
-      role
     } = body;
-    let updated = false;
-    userMessage.forEach(user => {
-      if (user.id === id) {
-        user.name = name;
-        user.password = password;
-        user.role = role;
-        updated = true;
-      }
-    });
-    if (updated) {
+    const user = await getUserById(id);
+
+    if (user) {
+      await updateUser(user, body);
       return {
         status: 200,
         data: 'yes'
@@ -91,16 +96,19 @@ module.exports = {
     const {
       id
     } = body;
-    let deleteStatus = 'no-user';
-    userMessage.forEach((user, index) => {
-      if (user.id === id) {
-        userMessage.splice(index, 1);
-        deleteStatus = 'deleted'
-      }
-    });
-    return {
-      status: 200,
-      data: deleteStatus
-    };
+    const user = await getUserById(id);
+
+    if (user) {
+      await deleteUser(user);
+      return {
+        status: 200,
+        data: '删除成功'
+      };
+    } else {
+      return {
+        status: 400,
+        message: '没有该用户'
+      };
+    }
   },
 };
