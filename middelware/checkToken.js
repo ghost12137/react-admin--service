@@ -5,7 +5,8 @@ const {
 
 const checkToken = async (ctx, next) => {
   const url = ctx.request.url;
-  if (url === '/api/login') {
+  const urlCheck = url === '/api/login' || /^\/images/.test(url)
+  if (urlCheck) {
     await next();
   } else {
     // 规定token写在header中的'sec_token'

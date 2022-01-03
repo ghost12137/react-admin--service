@@ -2,7 +2,7 @@ const UploadService = require('../../services/admin/upload');
 
 const { uploads } = require('../../utils/upload');
 
-const imgUpload = uploads('/uploads/images', 8 * 1024 * 500, 4);
+const imgUpload = uploads('/public/images', 8 * 1024 * 500, 4);
 
 module.exports = {
   uploadPic: async (ctx, next) => {
@@ -24,5 +24,10 @@ module.exports = {
       ctx.status = result.status;
       ctx.response.body = result;
     }
+  },
+  getPics: async (ctx, next) => {
+    const result = await UploadService.getPics();
+    ctx.status = result.status;
+    ctx.response.body = result;
   },
 };
