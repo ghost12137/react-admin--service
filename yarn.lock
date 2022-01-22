@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@koa/multer@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.nlark.com/@koa/multer/download/@koa/multer-3.0.0.tgz"
-  integrity sha1-Q5d3lJ8oCX17MpwLTOMEgHTIYvg=
-
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.nlark.com/@sindresorhus/is/download/@sindresorhus/is-0.14.0.tgz"
@@ -25,6 +20,13 @@
   integrity sha1-fMDqdhUJEkcJuLLRCQ2PbBeq24I=
   dependencies:
     "@types/ms" "*"
+
+"@types/formidable@^1.0.31":
+  version "1.2.5"
+  resolved "https://registry.npmmirror.com/@types/formidable/download/@types/formidable-1.2.5.tgz#561d026e5f09179e5c8ef7b31e8f4652e11abe4c"
+  integrity sha1-Vh0Cbl8JF55cjvezHo9GUuEavkw=
+  dependencies:
+    "@types/node" "*"
 
 "@types/ms@*":
   version "0.7.31"
@@ -217,15 +219,15 @@ clone-response@^1.0.2:
   dependencies:
     mimic-response "^1.0.0"
 
-co-body@^6.0.0:
-  version "6.1.0"
-  resolved "https://registry.npm.taobao.org/co-body/download/co-body-6.1.0.tgz?cache=0&sync_timestamp=1602173393252&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fco-body%2Fdownload%2Fco-body-6.1.0.tgz"
-  integrity sha1-2HqO/DVk+b/jrO2O9c0Ex6h2ZUc=
+co-body@^5.1.1:
+  version "5.2.0"
+  resolved "https://registry.nlark.com/co-body/download/co-body-5.2.0.tgz#5a0a658c46029131e0e3a306f67647302f71c124"
+  integrity sha1-WgpljEYCkTHg46MG9nZHMC9xwSQ=
   dependencies:
     inflation "^2.0.0"
-    qs "^6.5.2"
-    raw-body "^2.3.3"
-    type-is "^1.6.16"
+    qs "^6.4.0"
+    raw-body "^2.2.0"
+    type-is "^1.6.14"
 
 co@^4.6.0:
   version "4.6.0"
@@ -290,11 +292,6 @@ cookies@~0.8.0:
   dependencies:
     depd "~2.0.0"
     keygrip "~1.1.0"
-
-copy-to@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.nlark.com/copy-to/download/copy-to-2.0.1.tgz"
-  integrity sha1-JoD7uAaKSNCGVrYJgJK9r8kG9KU=
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -444,6 +441,11 @@ fill-range@^7.0.1:
   integrity sha1-GRmmp8df44ssfHflGYU12prN2kA=
   dependencies:
     to-regex-range "^5.0.1"
+
+formidable@^1.1.1:
+  version "1.2.6"
+  resolved "https://registry.npmmirror.com/formidable/download/formidable-1.2.6.tgz#d2a51d60162bbc9b4a055d8457a7c75315d1a168"
+  integrity sha1-0qUdYBYrvJtKBV2EV6fHUxXRoWg=
 
 fresh@~0.5.2:
   version "0.5.2"
@@ -796,13 +798,14 @@ keyv@^3.0.0:
   dependencies:
     json-buffer "3.0.0"
 
-koa-bodyparser@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.nlark.com/koa-bodyparser/download/koa-bodyparser-4.3.0.tgz"
-  integrity sha1-J0x3hVX/SPoiHufzap+9us4idZo=
+koa-body@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.npmmirror.com/koa-body/download/koa-body-4.2.0.tgz#37229208b820761aca5822d14c5fc55cee31b26f"
+  integrity sha512-wdGu7b9amk4Fnk/ytH8GuWwfs4fsB5iNkY8kZPpgQVb04QZSv85T0M8reb+cJmvLE8cjPYvBzRikD3s6qz8OoA==
   dependencies:
-    co-body "^6.0.0"
-    copy-to "^2.0.1"
+    "@types/formidable" "^1.0.31"
+    co-body "^5.1.1"
+    formidable "^1.1.1"
 
 koa-compose@^4.1.0:
   version "4.1.0"
@@ -978,16 +981,9 @@ mime-db@1.51.0:
   resolved "https://registry.npmmirror.com/mime-db/download/mime-db-1.51.0.tgz?cache=0&sync_timestamp=1636426033377&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmime-db%2Fdownload%2Fmime-db-1.51.0.tgz"
   integrity sha512-5y8A56jg7XVQx2mbv1lu49NR4dokRnhZYTtL+KGfaa27uq4pSTXkwQkFJl4pkRMyNFz/EtYDSkiiEHx3F7UN6g==
 
-mime-types@^2.1.18, mime-types@~2.1.24:
+mime-types@^2.1.18, mime-types@^2.1.34, mime-types@~2.1.24:
   version "2.1.34"
   resolved "https://registry.npmmirror.com/mime-types/download/mime-types-2.1.34.tgz?cache=0&sync_timestamp=1636432373429&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmime-types%2Fdownload%2Fmime-types-2.1.34.tgz"
-  integrity sha512-6cP692WwGIs9XXdOO4++N+7qjqv0rqxxVvJ3VHPh/Sc9mVZcQP+ZGhkKiTvWMQRr2tbHkJP/Yn7Y0npb3ZBs4A==
-  dependencies:
-    mime-db "1.51.0"
-
-mime-types@^2.1.34:
-  version "2.1.34"
-  resolved "https://registry.npmmirror.com/mime-types/download/mime-types-2.1.34.tgz?cache=0&sync_timestamp=1636432275511&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fmime-types%2Fdownload%2Fmime-types-2.1.34.tgz#5a712f9ec1503511a945803640fafe09d3793c24"
   integrity sha512-6cP692WwGIs9XXdOO4++N+7qjqv0rqxxVvJ3VHPh/Sc9mVZcQP+ZGhkKiTvWMQRr2tbHkJP/Yn7Y0npb3ZBs4A==
   dependencies:
     mime-db "1.51.0"
@@ -1215,14 +1211,14 @@ pupa@^2.1.1:
   dependencies:
     escape-goat "^2.0.0"
 
-qs@^6.5.2:
-  version "6.10.1"
-  resolved "https://registry.nlark.com/qs/download/qs-6.10.1.tgz"
-  integrity sha1-STFIL6jWR6Wqt5nFJx0hM7mB+2o=
+qs@^6.4.0:
+  version "6.10.3"
+  resolved "https://registry.npmmirror.com/qs/download/qs-6.10.3.tgz#d6cde1b2ffca87b5aa57889816c5f81535e22e8e"
+  integrity sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==
   dependencies:
     side-channel "^1.0.4"
 
-raw-body@^2.3.3:
+raw-body@^2.2.0:
   version "2.4.2"
   resolved "https://registry.npmmirror.com/raw-body/download/raw-body-2.4.2.tgz?cache=0&sync_timestamp=1637116848060&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fraw-body%2Fdownload%2Fraw-body-2.4.2.tgz"
   integrity sha512-RPMAFUJP19WIet/99ngh6Iv8fzAbqum4Li7AD6DtGaW2RpMB/11xDoalPiJMTbu6I3hkbMVkATvZrqb9EEqeeQ==
@@ -1501,7 +1497,7 @@ type-fest@^0.20.2:
   resolved "https://registry.npmmirror.com/type-fest/download/type-fest-0.20.2.tgz"
   integrity sha1-G/IH9LKPkVg2ZstfvTJ4hzAc1fQ=
 
-type-is@^1.6.16, type-is@^1.6.4:
+type-is@^1.6.14, type-is@^1.6.16, type-is@^1.6.4:
   version "1.6.18"
   resolved "https://registry.nlark.com/type-is/download/type-is-1.6.18.tgz"
   integrity sha1-TlUs0F3wlGfcvE73Od6J8s83wTE=

@@ -25,14 +25,7 @@ module.exports = {
   deleteUser: async (ctx, next) => {
     const body = ctx.request.body;
     const result = await AdminUsersService.deleteUser(body);
-    if (result.data === 'no-user') {
-      ctx.status = 400;
-      ctx.body = {
-        code: 400,
-        message: '未找到该用户'
-      };
-    } else {
-      ctx.response.body = result;
-    }
+    ctx.status = result.status;
+    ctx.response.body = result;
   },
 };

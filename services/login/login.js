@@ -19,11 +19,10 @@ module.exports = {
     const user = await getUserByName(name);
 
     if (user) {
-      const userValue = user.dataValues;
-      if (userValue.password === password) {
+      if (user.password === password) {
         loginMsg = '登陆成功';
         loginStatus = 200;
-        userData = userValue;
+        userData = user;
       } else {
         loginMsg = '密码错误';
       }

@@ -1,13 +1,11 @@
 const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
+const path = require('path');
 const staticFiles = require('koa-static');
 const cors = require('koa2-cors');
-const path = require('path');
 const router = require('./router');
 
 const app = new Koa();
 
-app.use(bodyParser());
 app.use(staticFiles(path.join(__dirname + '/public/')));
 app.use(
   cors({

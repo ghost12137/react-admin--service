@@ -30,18 +30,25 @@ module.exports = {
 
     const sliceBegin = (currentPage - 1) * pageSize;
 
-    let result = await getAllUsers(sliceBegin, pageSize);
+    let userList = [];
+    let userCount = 0;
+    let status = 400;
+    let message = '获取用户列表失败';
 
-    const userCount = await getAllUsersCount();
+    try {
+      userList = await getAllUsers(sliceBegin, pageSize);
 
-    if (result && result.length) {
-      result = result.map(item => {
-        return JSON.parse(JSON.stringify(item, null, 2));
-      })
+      userCount = await getAllUsersCount();
+
+      status = 200;
+      message = '获取用户列表成功';
+    } catch (error) {
+      console.log('service admin users getUserList error: ', error);
     }
     return {
-      data: result,
-      status: 200,
+      data: userList,
+      status,
+      message,
       total: userCount
     };
   },
