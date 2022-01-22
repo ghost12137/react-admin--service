@@ -2,6 +2,7 @@ const path = require('path');
 const uuid = require('uuid');
 const koaBody = require('koa-body')({
   multipart: true,  // 允许上传多个文件
+  strict: false,//设为false 如果启用，则不解析GET，HEAD，DELETE请求，默认为true
   formidable: {
     uploadDir: path.join(__dirname, "/public/"), // 设置文件上传目录
     keepExtensions: true, // 保持文件的后缀

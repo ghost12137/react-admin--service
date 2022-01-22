@@ -1,4 +1,6 @@
 const UUID = require('uuid');
+const fs = require('fs');
+const path = require('path');
 
 const {
   getAllGoods,
@@ -95,7 +97,21 @@ module.exports = {
     let data = '';
     try {
       const good = await getGoodById(id);
+      console.log(id)
       if (good) {
+        const goodImg = good.dataValues.goodImg;
+        const imgList = goodImg.split(';');
+        const baseDir = __dirname.split('\\');
+        baseDir.pop();
+        baseDir.pop();
+        baseDir.push('public');
+        imgList.forEach(imgUrl => {
+          try {
+            fs.unlinkSync(path.join(baseDir.join('\\'), imgUrl));
+          } catch (error) {
+            console.log('delete good image error: ', error)
+          }
+        })
         await deleteGood(good);
         status = 200;
         message = '删除商品成功';

@@ -12,6 +12,7 @@ module.exports = {
     ctx.response.body = result;
   },
   deleteGood: async (ctx, next) => {
+    console.log(ctx.request.body)
     const { id } = ctx.request.body;
     const result = await AdminGoodsService.deleteGood(id);
     ctx.status = result.status;
