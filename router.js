@@ -24,7 +24,7 @@ module.exports = app => {
 
   router.get('/api/admin/goods', AdminGoodsController.getGoods);
   router.post('/api/admin/goods', AdminGoodsController.createGood);
-  router.put('/api/admin/goods');
+  router.put('/api/admin/goods', AdminGoodsController.updateGood);
   router.delete('/api/admin/goods', AdminGoodsController.deleteGood);
 
   app.use(router.routes())

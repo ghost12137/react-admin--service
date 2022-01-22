@@ -4,9 +4,9 @@ const fs = require('fs');
 
 module.exports = {
   uploadPic: (ctx) => {
-    const imgFileList = ctx.files.imgFileList;
+    const imgFileList = ctx.request.files.imgFileList;
     console.log(imgFileList)
-    if (imgFileList.length) {
+    if (imgFileList) {
       return {
         status: 200,
         data: '上传成功'
@@ -25,7 +25,7 @@ module.exports = {
     const baseDir = __dirname.split('\\');
     baseDir.pop();
     baseDir.pop();
-    const filePath = baseDir.join('\\') + '/public/images/010d0e09-8a72-4ac4-9230-1730e348d770.jpg';
+    const filePath = baseDir.join('\\') + '/public/images/school-2.jpg';
     let file = null;
     try {
       file = fs.readFileSync(filePath);
