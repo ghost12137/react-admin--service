@@ -22,7 +22,7 @@ module.exports = {
 
     // 返回图片buffer
     //#region 
-    const baseDir = __dirname.split('\\');
+    const baseDir = __dirname.split(/[/|\\]/);
     baseDir.pop();
     baseDir.pop();
     const filePath = baseDir.join('\\') + '/public/images/school-2.jpg';

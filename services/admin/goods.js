@@ -55,7 +55,7 @@ module.exports = {
         message = '该商品名已存在';
         const imgFiles = ctx.request.files.imgFileList;
         if (imgFiles) {
-          const baseDir = __dirname.split('\\');
+          const baseDir = __dirname.split(/[/|\\]/);
           baseDir.pop();
           baseDir.pop();
           baseDir.push('public');
@@ -124,7 +124,7 @@ module.exports = {
           .split(';')
           .filter(imgUrl => imgUrl !== '');
 
-        const baseDir = __dirname.split('\\');
+        const baseDir = __dirname.split(/[/|\\]/);
         baseDir.pop();
         baseDir.pop();
         baseDir.push('public');
@@ -191,7 +191,7 @@ module.exports = {
       if (good) {
         const goodImg = good.dataValues.goodImg;
         const imgList = goodImg.split(';').filter(imgUrl => imgUrl !== '');
-        const baseDir = __dirname.split('\\');
+        const baseDir = __dirname.split(/[/|\\]/);
         baseDir.pop();
         baseDir.pop();
         baseDir.push('public');

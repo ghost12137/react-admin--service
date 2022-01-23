@@ -9,7 +9,7 @@ const koaBody = require('koa-body')({
     maxFieldsSize: 8 * 1024 * 500, // 文件上传大小限制
     onFileBegin: (name, file) => {
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-      const baseDir = __dirname.split('\\');
+      const baseDir = __dirname.split(/[/|\\]/);
       baseDir.pop();
       let fileDir = path.join(baseDir.join('\\'), '/public/files');
       if (isJpgOrPng) {
