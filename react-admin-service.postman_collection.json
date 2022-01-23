@@ -164,11 +164,13 @@
 							"query": [
 								{
 									"key": "currentPage",
-									"value": "1"
+									"value": "1",
+									"description": "当前页号"
 								},
 								{
 									"key": "pageSize",
-									"value": "10"
+									"value": "10",
+									"description": "一页几条"
 								}
 							]
 						}
@@ -186,16 +188,19 @@
 								{
 									"key": "name",
 									"value": "test",
+									"description": "用户姓名",
 									"type": "default"
 								},
 								{
 									"key": "password",
 									"value": "1234",
+									"description": "用户密码",
 									"type": "default"
 								},
 								{
 									"key": "role",
 									"value": "0",
+									"description": "用户角色",
 									"type": "default"
 								}
 							]
@@ -227,21 +232,25 @@
 								{
 									"key": "name",
 									"value": "test",
+									"description": "用户姓名",
 									"type": "default"
 								},
 								{
 									"key": "password",
 									"value": "123",
+									"description": "用户密码",
 									"type": "default"
 								},
 								{
 									"key": "role",
 									"value": "1",
+									"description": "用户角色",
 									"type": "default"
 								},
 								{
 									"key": "id",
 									"value": "6498ecf0-779c-11ec-b9e4-f11d5e3a6fe3",
+									"description": "用户id",
 									"type": "default"
 								}
 							]
@@ -267,6 +276,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "90d91e80-7c32-11ec-9abc-577497e8e072",
+									"description": "用户id",
+									"type": "default"
+								}
+							]
+						},
 						"url": {
 							"raw": "http://localhost:9000/api/admin/users",
 							"protocol": "http",
@@ -288,7 +308,192 @@
 		},
 		{
 			"name": "good manage",
-			"item": [],
+			"item": [
+				{
+					"name": "getGoodList(no params)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/admin/goods?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"admin",
+								"goods"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getGoodList(params)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/admin/goods?currentPage=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"admin",
+								"goods"
+							],
+							"query": [
+								{
+									"key": "currentPage",
+									"value": "1",
+									"description": "当前页号"
+								},
+								{
+									"key": "pageSize",
+									"value": "10",
+									"description": "一页几条"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createGood",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test1",
+									"description": "商品名称(必填)",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "test1",
+									"description": "商品描述",
+									"type": "default"
+								},
+								{
+									"key": "imgFileList",
+									"description": "商品图片(最多四张)",
+									"type": "file",
+									"src": "/F:/大学的资料/本人的文件/school-2.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/admin/goods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"admin",
+								"goods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateGood",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "c03df390-7c31-11ec-9abc-577497e8e072",
+									"description": "商品id(必填)",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "test2",
+									"description": "商品名称(必填)",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "test2",
+									"description": "商品描述",
+									"type": "default"
+								},
+								{
+									"key": "imgFileList",
+									"type": "file",
+									"src": "/F:/大学的资料/本人的文件/school-3.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/admin/goods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"admin",
+								"goods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteGood",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "c03df390-7c31-11ec-9abc-577497e8e072",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/admin/goods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"admin",
+								"goods"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"description": "商品管理接口"
 		}
 	]
