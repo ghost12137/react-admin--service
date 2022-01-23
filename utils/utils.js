@@ -11,9 +11,9 @@ const koaBody = require('koa-body')({
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
       const baseDir = __dirname.split(/[/|\\]/);
       baseDir.pop();
-      let fileDir = path.join(baseDir.join('\\'), '/public/files');
+      let fileDir = path.join(baseDir.join('/'), '/public/files');
       if (isJpgOrPng) {
-        fileDir = path.join(baseDir.join('\\'), '/public/images');
+        fileDir = path.join(baseDir.join('/'), '/public/images');
       }
       const newFileName = uuid.v1();
       const extname = path.extname(file.name);

@@ -25,7 +25,7 @@ module.exports = {
     const baseDir = __dirname.split(/[/|\\]/);
     baseDir.pop();
     baseDir.pop();
-    const filePath = baseDir.join('\\') + '/public/images/school-2.jpg';
+    const filePath = baseDir.join('/') + '/public/images/school-2.jpg';
     let file = null;
     try {
       file = fs.readFileSync(filePath);

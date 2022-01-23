@@ -62,9 +62,9 @@ module.exports = {
           baseDir.push('images');
           try {
             if (!(imgFiles instanceof Array)) {
-              fs.unlinkSync(path.join(baseDir.join('\\'), imgFiles.name));
+              fs.unlinkSync(path.join(baseDir.join('/'), imgFiles.name));
             } else {
-              imgFiles.forEach(imageFile => fs.unlinkSync(path.join(baseDir.join('\\'), imageFile.name)));
+              imgFiles.forEach(imageFile => fs.unlinkSync(path.join(baseDir.join('/'), imageFile.name)));
             }
           } catch (error) {
             console.error('service admin goods create good image delete error: ', error);
@@ -142,7 +142,7 @@ module.exports = {
         preGoodImgList = preGoodImgList.filter(imgUrl => {
           if (!updateGoodImgList.includes(imgUrl)) {
             try {
-              fs.unlinkSync(path.join(baseDir.join('\\'), imgUrl));
+              fs.unlinkSync(path.join(baseDir.join('/'), imgUrl));
             } catch (error) {
               console.error('service admin goods update good image delte error: ', error);
             }
@@ -197,7 +197,7 @@ module.exports = {
         baseDir.push('public');
         imgList.forEach(imgUrl => {
           try {
-            fs.unlinkSync(path.join(baseDir.join('\\'), imgUrl));
+            fs.unlinkSync(path.join(baseDir.join('/'), imgUrl));
           } catch (error) {
             console.log('service admin goods delete good image error: ', error)
           }
