@@ -1,4 +1,5 @@
 const Router = require('koa-router');
+const TestController = require('./controller/test/test');
 const UploadController = require('./controller/admin/upload');
 const AdminUsersController = require('./controller/admin/users');
 const AdminGoodsController = require('./controller/admin/goods');
@@ -9,8 +10,11 @@ const { koaBody } = require('./utils/utils');
 const router = new Router();
 
 module.exports = app => {
+  router.get('/test/hello', TestController.helloWorld);
+
   app.use(checkToken);
   app.use(koaBody);
+
   router.post('/api/login', LoginController.userLogin);
 
   router.post('/api/admin/uploadPic', UploadController.uploadPic);

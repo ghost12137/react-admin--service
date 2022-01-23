@@ -5,7 +5,7 @@ const {
 
 const checkToken = async (ctx, next) => {
   const url = ctx.request.url;
-  const urlCheck = url === '/api/login' || /^\/images/.test(url)
+  const urlCheck = url === '/api/login' || /^\/images/.test(url) || /^\/test/.test(url);
   if (urlCheck) {
     await next();
   } else {
