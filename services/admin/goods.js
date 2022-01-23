@@ -53,6 +53,24 @@ module.exports = {
       const good = await getGoodByName(name);
       if (good) {
         message = '该商品名已存在';
+        const imgFiles = ctx.request.files.imgFileList;
+        if (imgFiles) {
+          const baseDir = __dirname.split('\\');
+          baseDir.pop();
+          baseDir.pop();
+          baseDir.push('public');
+          baseDir.push('images');
+          try {
+            if (!(imgFiles instanceof Array)) {
+              fs.unlinkSync(path.join(baseDir.join('\\'), imgFiles.name));
+            } else {
+              imgFiles.forEach(imageFile => fs.unlinkSync(path.join(baseDir.join('\\'), imageFile.name)));
+            }
+          } catch (error) {
+            console.error('service admin goods create good image delete error: ', error);
+          }
+
+        }
       } else {
 
         const imgFiles = ctx.request.files.imgFileList;
@@ -93,7 +111,6 @@ module.exports = {
   updateGood: async (ctx) => {
     const body = ctx.request.body;
     const { id, name, description, imgFileList } = body;
-    console.log('body: ', body)
     let status = 400;
     let message = '修改商品失败';
     let data = '';
@@ -127,7 +144,7 @@ module.exports = {
             try {
               fs.unlinkSync(path.join(baseDir.join('\\'), imgUrl));
             } catch (error) {
-              console.error(console.log('service admin goods update good image delte error: ', error));
+              console.error('service admin goods update good image delte error: ', error);
             }
           }
           return updateGoodImgList.includes(imgUrl);
