@@ -12,13 +12,15 @@ app.use(staticFiles(path.join(__dirname + '/public/')));
 app.use(
   cors({
     origin: (ctx) => { //设置允许来自指定域名请求
-      if (ctx.url === '/test') {
+      if (/^\/test/.test(ctx.url)) {
         return '*'; // 允许来自所有域名请求
       }
 
-      const urlOrigin = new URL(ctx.header.referer).origin;
-      if (whiteList.includes(urlOrigin)) {
-        return urlOrigin;
+      if (ctx.header.referer) {
+        const urlOrigin = new URL(ctx.header.referer).origin;
+        if (whiteList.includes(urlOrigin)) {
+          return urlOrigin;
+        }
       }
 
       return 'http://localhost:3000'; //只允许http://localhost:3000这个域名的请求
