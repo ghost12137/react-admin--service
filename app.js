@@ -4,6 +4,7 @@ const staticFiles = require('koa-static');
 const cors = require('koa2-cors');
 const router = require('./router');
 const { whiteList } = require('./ipWhiteList');
+const { env } = require("./config");
 
 const app = new Koa();
 
@@ -30,8 +31,10 @@ app.use(
   })
 );
 router(app);
-app.listen(9000, () => {
-  console.log('server is running at http://localhost:9000');
+
+const port = (env === 'development' ? 9000 : 10004);
+app.listen(port, () => {
+  console.log(`server is running at http://localhost:${port}`);
 });
 
 module.exports = app;

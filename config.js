@@ -1,9 +1,9 @@
-const env = process.env;
+const env = process.env.NODE_ENV || 'development';
 
 const db = {
-  database: 'react_admin_service',
+  database: env === 'development' ? 'react_admin_service' : 'admin_service',
   username: 'root',
-  password: 'mysql',
+  password: env === 'development' ? 'mysql' : 'jcl20000804',
   hostName: 'localhost'
 };
 

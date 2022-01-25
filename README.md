@@ -10,8 +10,5 @@
 
 #### 注意
 1. 该后端服务需要连接mysql数据库，所以确保运行环境中有mysql。
-2. 运行前先将当前项目根目录的config.js中的数据库相关配置改为本地mysql配置
-3. config.js----password: '', database: 'admin_service'
-4. package.json---- node index.js
-5. app.js ---- listen: 10004
-6. 运行使用`yarn start` or `npm run start`
+2. 运行开发环境使用`yarn dev` or `npm run dev`
+3. 运行生产环境使用`yarn prod` or `npm run prod`
